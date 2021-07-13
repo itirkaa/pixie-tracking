@@ -34,10 +34,9 @@ def pixel_view(request):
 
     print("Saving data to database...")
     
-    tracker, created = Email.objects.get_or_create(pixel_id=pixel_id)
-    if not created:
-        tracker.seen = tracker.seen + 1
-        tracker.save()
+    tracker, created = Email.objects.get_or_create(pixel_id=pixel_id, date=date.today(), subject=event_record['data']['subject'], user_to=event_record['data']['to'], user_cc=event_record['data']['cc'], seen=0)
+    tracker.seen = tracker.seen + 1
+    tracker.save()
     # track = Email(pixel_id=pixel_id, date=date.today(), subject=event_record['data']['subject'], user_to=event_record['data']['to'], user_cc=event_record['data']['cc'], seen=1)
     # track.save()
     # consume_open.delay(event_record)
