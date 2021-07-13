@@ -1,1 +1,1 @@
-web: gunicorn EmailTracker.wsgi
+web: gunicorn EmailTracker.wsgi --log-file -
