@@ -1,1 +1,1 @@
-web: gunicorn pixie.wsgi
+web: gunicorn pixie-tracking.wsgi
